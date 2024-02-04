@@ -11,12 +11,22 @@ main{
     margin-top: 200px;
     font-size: 40px
 }
-button{
+.counter{
     background-color: green;
-    width: 100px;
-    height: 50px;
-    font-size: 20px;
+    font-size: 25px;
+    color: white;
+    border: black solid 2px ;
+    border-radius: 5%;
 }
-div button{
+
+.reset{
+    background-color: red;
+    font-size: 25px;
+    color: white;
+    border: black solid 2px ;
+    border-radius: 5%;
+}
+div a{
     margin: 20px;
+    padding: 15px;
 }

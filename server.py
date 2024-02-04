@@ -2,26 +2,27 @@ from flask import Flask,render_template, redirect, request, session
 app = Flask(__name__)
 app.secret_key = 'ninjaskeyisashurikens'
     
-@app.route('/', methods=['POST']) 
+@app.route('/', methods=['GET']) 
 def counter_page():
-    number = 0
-    viewing = number + 1 
-    print(viewing)
-    return render_template('index.html', numbers = viewing)
+    if 'visiting' not in session:
+        session['visiting'] = 0
+    else:
+        session['visiting'] += 1
+    return render_template('index.html')
 
-@app.route('/up')
+@app.route('/up', methods=['GET'])
 def up_the_counter():
-    print('up')
+    if 'visiting' not in session:
+        session['visiting'] = 0
+    else:
+        session['visiting'] += 1
     return redirect('/')
 
-app.route('/destroy_session')
+@app.route('/clear', methods=['GET'])
 def full_restart():
+    session.clear()
     return redirect('/')
 
-# if 'key_name' in session:
-#     print('key exist!')
-# else:
-#     print('key "key_name" does NOT exist')
 
 if __name__=="__main__":
     app.run(debug=True)
